@@ -10,6 +10,7 @@ var arr = [10,20,30];
   }
 
 
+
 //Next problem
 
 
@@ -33,7 +34,7 @@ var family = ['Tyler', 'Jordyn', 'Ryan', 'Chelsey', 'Ireland'];
   //Code Here
   function looper(family){
     for (var i = 0; i < family.length; i++){
-      alert(arr[i]);
+      alert(family[i]);
     }
   }
 
@@ -65,6 +66,7 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
         nums.splice(i, 1);
       }
     }
+    return nums;
   }
 
 
@@ -128,6 +130,7 @@ var str = 'this is my sentence';
   //Code Here
   function reverse(str){
     str = str.split("").reverse().join("");
+    return str;
   }
 
 
@@ -152,6 +155,28 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 
   //Code Here
 
+  function removeItem(list, item){
+    if (list instanceof Array && typeof item === "string"){
+      for(var i = 0; i < list.length; i++){
+        if(list[i] === item){
+          list.splice(i, 1);
+        }
+      }
+    } else{
+      return [];
+    }
+    return list;
+  }
+
+  function addItem(groceries, item){
+    if(groceries instanceof Array && typeof item === "string"){
+      groceries.push(item);
+      return groceries;
+    }else{
+      return [];
+    }
+  }
+
 //removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 
@@ -164,6 +189,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 
   //Code Here
+  function maker(){
+    var arr = [];
+    for (var i = 1; i < 216; i++){
+      arr.push(i);
+    }
+    return arr;
+  }
 
 
 
@@ -175,6 +207,21 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 //array after adding ten to each item in numbers. *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 
   //Code Here
+  function addTen(numbers){
+    var newNums = [];
+    for (var i = 0; i < numbers.length; i++){
+      if(typeof numbers[i] === "string"){
+        numbers[i] = parseInt(numbers[i]);
+        numbers[i] += 10;
+        newNums.push(numbers[i]);
+      } else {
+        numbers[i] += 10;
+        newNums.push(numbers[i]);
+      }
+    }
+    return newNums;
+  }
+
 
 
 
@@ -197,6 +244,14 @@ for(var i = 0; i < num2; i++){
 
   //Code Here
 
+  function longer(arr1, arr2){
+    if (arr1.length > arr2.length){
+      return arr1;
+    } else {
+      return arr2;
+    }
+  }
+
 
 /*As a continuation of the previous problem, write another function called 'both'.
   Your 'both' function will be given two arguments, arr1 and arr2 (from the previous example).
@@ -205,7 +260,17 @@ for(var i = 0; i < num2; i++){
 */
 
   //Code Here
-
+  function both(arr1, arr2){
+    var newArray = [];
+    for (var i = 0; i < arr1.length; i++){
+      for (var j = 0; j < arr2.length; j++){
+        if (arr2[j] === arr1[i]){
+          newArray.push(arr2[j]);
+        }
+      }
+    }
+    return newArray;
+  }
 
 
 
@@ -246,10 +311,29 @@ sure that it's equal to 4. */
 
   //Code Here
 
+  function fillArray(tyler, cahlan, ryan, colt){
+    for(var i = 0; i < arguments.length; i++){
+      devMountainEmployees.push(arguments[i]);
+    }
+  }
+
+  fillArray(tyler, cahlan, ryan, colt);
+  console.log(devMountainEmployees.length);
+
 /*Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
 Loop through your devMountainEmployees until you find cahlan, then remove him from the array.*/
 
   //Code Here
+
+  function destroyCahlan(employees){
+    for (var i = 0; i < employees.length; i++){
+      if (employees[i].name === "Cahlan"){
+        employees.splice(i, 1);
+      }
+    }
+  }
+
+destroyCahlan(devMountainEmployees);
 
 
 
@@ -292,6 +376,7 @@ of Data is to have an Array full of objects. */
 //Create an empty array called users.
 
   //Code Here
+  var users = [];
 
 /*Now add three user objects to your users array. Each user object should contain the
 following properties. name, email, password, username.*/
@@ -304,7 +389,22 @@ var user1 = {
     username: 'infiniateLoop'
 };
 
+var user2 = {
+    name: "Steven Nagie",
+    email: "stevenisgreat@bigdigger.com",
+    password: "hips don't lie",
+    username: "initiate pencil"
+};
+
+var user3 = {
+    name: "Obamacare",
+    email: "barack@obama.com",
+    password: "for the people",
+    username: "b.obams"
+};
+
 //Your Code Here
+  users.push(user1, user2, user3);
 
 /*Now you have a very common data structure. Twitter is a good use case.
 It's easy to imagine that your followers list on Twitter is an Array full or objects
@@ -315,5 +415,17 @@ objects until you find Tyler's account (use tylermcginnis33@gmail.com to find hi
 Once you find the particular index he's located in, delete him from the array.*/
 
   //Code Here
+
+function destroyTyler(users){
+  for(var i = 0; i < users.length; i++){
+    if(users[i].email === "tylermcginnis33@gmail.com"){
+      users.splice(i, 1);
+    }
+  }
+
+}
+
+  destroyTyler(users);
+
 
 //The activity we just did is very much how data works in 'the real world'.
